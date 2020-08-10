@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Entity
 {
-    public sealed class Player : BaseSceneEntity, IHealth, IPickUp
+    public sealed class Player : BaseSceneEntity, IHealth
     {
         [Range(0f, 100f)]
         [SerializeField]

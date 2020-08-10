@@ -12,12 +12,14 @@ namespace Game.Entity
 
         protected virtual void Start()
         {
-            GameController.Get.EntityFacade.MobController.Add(this);
+            GameInfrastructure.Get.EntityFacade
+                .OnChangeExistanceStatus(new Facade.EntityEventArgs(this, true));
         }
 
         protected virtual void OnDestroy()
         {
-            GameController.Get.EntityFacade.MobController.Remove(this);
+            GameInfrastructure.Get.EntityFacade
+                .OnChangeExistanceStatus(new Facade.EntityEventArgs(this, false));
         }
     }
 }

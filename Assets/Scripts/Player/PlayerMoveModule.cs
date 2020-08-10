@@ -1,69 +1,73 @@
 ﻿using UnityEngine;
 using Game.Entity;
 using Game.InputManagment;
+using Game.GeneralModule;
 
-public interface IPlayerMover
+namespace Game.PlayerController
 {
-    void Update();
-}
-
-public sealed class PlayerMoveModule : IPlayerMover
-{
-    private Player _player;
-
-    public PlayerMoveModule(Player player)
+    public interface IPlayerMover
     {
-        _player = player;
+        void Update();
     }
 
-    public void Update()
+    public sealed class PlayerMoveModule : BaseModule, IPlayerMover
     {
-        var moveCommand = PlayerInputHelper.GetMoveCommand();
-        if (moveCommand.Has) {
-            Move(moveCommand);
-        }
-    }
+        private Player _player;
 
-    private void Move(PlayerMoveCommand moveCommand)
-    {
-        Vector3 fromPosition = _player.MainTransform.position;
-        Vector3 toPosition = Vector3.zero;
-        Vector3 direction = Vector3.zero;
-
-        if (moveCommand.w) {
-            direction += _player.MainTransform.forward;
+        public PlayerMoveModule(Player player)
+        {
+            _player = player;
         }
 
-        if (moveCommand.s) {
-            direction -= _player.MainTransform.forward;
+        public void Update()
+        {
+            var moveCommand = PlayerInputHelper.GetMoveCommand();
+            if (moveCommand.Has) {
+                Move(moveCommand);
+            }
         }
 
-        if (moveCommand.d) {
-            direction += _player.MainTransform.right;
-        }
+        private void Move(PlayerMoveCommand moveCommand)
+        {
+            Vector3 fromPosition = _player.MainTransform.position;
+            Vector3 toPosition = Vector3.zero;
+            Vector3 direction = Vector3.zero;
 
-        if (moveCommand.a) {
-            direction -= _player.MainTransform.right;
-        }
+            if (moveCommand.w) {
+                direction += _player.MainTransform.forward;
+            }
 
-        toPosition = fromPosition + direction.normalized;
-        _player.MainTransform.position = Vector3.Lerp(
-           fromPosition,
-           toPosition,
-           Time.deltaTime * _player.MoveSpeed);
+            if (moveCommand.s) {
+                direction -= _player.MainTransform.forward;
+            }
 
-        if (direction.Equals(Vector3.zero)) {
-            return;
-        }
+            if (moveCommand.d) {
+                direction += _player.MainTransform.right;
+            }
 
-        Quaternion fromRotation = _player.MainTransform.rotation;
-        Quaternion toRotation = Quaternion.LookRotation(direction);
+            if (moveCommand.a) {
+                direction -= _player.MainTransform.right;
+            }
 
-        if (!direction.Equals(-_player.MainTransform.forward)) {
-            _player.MainTransform.rotation = Quaternion.Lerp(
-            fromRotation,
-            toRotation,
-            Time.deltaTime * _player.RotationSpeed);
+            toPosition = fromPosition + direction.normalized;
+            _player.MainTransform.position = Vector3.Lerp(
+               fromPosition,
+               toPosition,
+               Time.deltaTime * _player.MoveSpeed);
+
+            if (direction.Equals(Vector3.zero)) {
+                return;
+            }
+
+            Quaternion fromRotation = _player.MainTransform.rotation;
+            Quaternion toRotation = Quaternion.LookRotation(direction);
+
+            if (!direction.Equals(-_player.MainTransform.forward)) {
+                _player.MainTransform.rotation = Quaternion.Lerp(
+                fromRotation,
+                toRotation,
+                Time.deltaTime * _player.RotationSpeed);
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4438386373100607595}
   - component: {fileID: 2276958867483778824}
   - component: {fileID: 5758879673102378203}
-  - component: {fileID: 6278580694037563795}
+  - component: {fileID: 4242320643531006020}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -80,8 +80,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6278580694037563795
-BoxCollider:
+--- !u!135 &4242320643531006020
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -91,7 +91,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 1.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9202547862136715904
 GameObject:
@@ -102,6 +102,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4082410900163123798}
+  - component: {fileID: 5281746500158266223}
+  - component: {fileID: 3637809370496093180}
   m_Layer: 0
   m_Name: BlueGranade
   m_TagString: Untagged
@@ -124,3 +126,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5281746500158266223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9202547862136715904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263c8c6800523ec4e834d9312c18c260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainTransform: {fileID: 4082410900163123798}
+  _invetoryType: 1
+  _pickupCount: 1
+--- !u!114 &3637809370496093180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9202547862136715904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c257ea983c7584a824cce81b720d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entity: {fileID: 5281746500158266223}
+  _speed: 75
+  _rotateAngle: {x: 0, y: 1, z: 0}

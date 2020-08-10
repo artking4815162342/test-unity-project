@@ -7,8 +7,12 @@
         int Health { get; }
     }
 
-    public interface IPickUp
+    public interface ICanPickup
     {
+        InventoryType InventoryType { get; }
 
+        int Count { get; }
+
+        void PickupEndProcess();
     }
 }
