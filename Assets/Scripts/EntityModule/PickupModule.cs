@@ -22,7 +22,7 @@ namespace Game.GeneralModule
         public PickupChangeData TryPickup(Collider collider)
         {
             var colliderRoot = collider.transform.root.gameObject;
-            var entity = GameInfrastructure.Get
+            var entity = GameInfrastructure.GetInstance
                 .EntityFacade.TryGetEntity(colliderRoot);
 
             if (entity == null || !(entity is ICanPickup pickupObject)) {

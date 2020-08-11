@@ -12,13 +12,13 @@ namespace Game.Entity
 
         protected virtual void Start()
         {
-            GameInfrastructure.Get.EntityFacade
+            GameInfrastructure.GetInstance.EntityFacade
                 .OnChangeExistanceStatus(new Facade.EntityEventArgs(this, true));
         }
 
         protected virtual void OnDestroy()
         {
-            GameInfrastructure.Get.EntityFacade
+            GameInfrastructure.GetInstance.EntityFacade
                 .OnChangeExistanceStatus(new Facade.EntityEventArgs(this, false));
         }
     }

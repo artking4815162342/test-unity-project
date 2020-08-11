@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Entity
 {
-    public sealed class GranadeHolder : BaseSceneEntity, ICanPickup
+    public sealed class GrenadeHolder : BaseSceneEntity, ICanPickup
     {
         [SerializeField]
         private InventoryType _invetoryType;

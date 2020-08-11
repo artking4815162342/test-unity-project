@@ -1,6 +1,6 @@
 ﻿public abstract class BaseSingleton<T> where T : BaseSingleton<T>, new()
 {
-    public static T Get
+    public static T GetInstance
     {
         get
         {

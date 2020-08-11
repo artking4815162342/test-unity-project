@@ -12,12 +12,14 @@ namespace Game.PlayerController
         private IPlayerMover _mover;
         private IInventory _inventory;
         private IPickup _pickuper;
+        private IPlayerInventoryUI _inventoryUI;
 
-        private void Awake()
+        private void Start()
         {
             _mover = new PlayerMoveModule(_player);
             _inventory = new InventoryModule();
             _pickuper = new PickupModule();
+            _inventoryUI = new PlayerInventoryUIModule(_player, _inventory.InventoryReadonly);
         }
 
         private void FixedUpdate()

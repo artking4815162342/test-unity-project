@@ -1,7 +1,7 @@
 ﻿public enum InventoryType
 {
     None,
-    BlueGranade,
-    YellowGranade,
-    PurpleGranade,
+    BlueGrenade,
+    YellowGrenade,
+    PurpleGrenade,
 }
