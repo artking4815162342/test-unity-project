@@ -9,34 +9,6 @@ namespace Game.GeneralModule
 {
     public delegate void InventoryEvent(InventoryEventArgs e);
 
-    public interface IInventory
-    {
-        IInventoryReadonly InventoryReadonly { get; }
-
-        void Add(InventoryType type, int count);
-
-        void Remove(InventoryType type, int count);
-
-        bool Contains(InventoryType type, int count);
-
-        void ProcessPickupData(PickupChangeData data);
-
-        void ChangeSelect(PlayerSelectCommand command);
-    }
-
-    public interface IInventoryReadonly
-    {
-        bool Contains(InventoryType type, int count);
-
-        IInventoryDataReadonly GetItem(InventoryType type);
-
-        IEnumerable<IInventoryDataReadonly> GetAll();
-
-        void AddChangeItemEventListener(InventoryEvent @event);
-
-        void RemoveChangeItemEventListener(InventoryEvent @event);
-    }
-
     public sealed class InventoryEventArgs : EventArgs
     {
         public InventoryType Type { get; private set; }
