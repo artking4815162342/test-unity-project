@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Game.GeneralModule;
+using Game.Storage;
 
 namespace Game.UI
 {
@@ -17,18 +16,17 @@ namespace Game.UI
         [SerializeField]
         private Image _selected;
 
-        public void Init(KeyValuePair<InventoryType, int> item)
+        public void Init(IInventoryDataReadonly inventoryData, InventoryItemData storageData)
         {
-            var data = Storage.InventoryItemStorageProxy
-                .GetInstance.GetData((int)item.Key);
-
-            if (data == null) {
+            if (storageData == null || inventoryData == null) {
+                //TODO: Change to logger
                 Debug.LogError("[InventoryItemView:Init] Invalid data!");
+                return;
             }
 
-            _icon.color = data.Color;
-            _count.text = item.Value.ToString();
-            _selected.gameObject.SetActive(false);
+            _icon.color = storageData.Color;
+            _count.text = inventoryData.Count.ToString();
+            _selected.gameObject.SetActive(inventoryData.IsSelected);
         }
     }
 }

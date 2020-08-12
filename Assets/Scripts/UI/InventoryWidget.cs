@@ -15,7 +15,7 @@ namespace Game.UI
         [SerializeField]
         private VerticalLayoutGroup _grid;
 
-        private IInventoryReadonly _inventory;
+        private IInventoryReadonly _inventoryProvider;
 
         private List<InventoryItemView> _views;
 
@@ -23,7 +23,7 @@ namespace Game.UI
         {
             try
             {
-                _inventory = @params[0] as IInventoryReadonly;
+                _inventoryProvider = @params[0] as IInventoryReadonly;
             }
             catch (Exception e)
             {
@@ -33,12 +33,12 @@ namespace Game.UI
 
             _views = new List<InventoryItemView>();
             UpdateGrid();
-            _inventory.AddChangeItemEventListener(OnChangeInventoryItem);
+            _inventoryProvider.AddChangeItemEventListener(OnChangeInventoryItem);
         }
 
         private void OnDestroy()
         {
-            _inventory.RemoveChangeItemEventListener(OnChangeInventoryItem);
+            _inventoryProvider.RemoveChangeItemEventListener(OnChangeInventoryItem);
         }
 
         private void OnChangeInventoryItem(InventoryEventArgs e)
@@ -49,11 +49,14 @@ namespace Game.UI
         private void UpdateGrid()
         {
             int index = 0;
-            var inventoryData = _inventory.GetAll();
+            var inventoryData = _inventoryProvider.GetAll();
 
             foreach (var itemData in inventoryData) {
+                var starageData = Game.Storage
+                    .InventoryItemStorageProxy.GetInstance.GetData(itemData.ID);
+
                 var view = GetViewItem(index);
-                view.Init(itemData);
+                view.Init(itemData, starageData);
                 view.gameObject.SetActive(true);
 
                 index++;

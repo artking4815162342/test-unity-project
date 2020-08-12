@@ -27,6 +27,21 @@ namespace Game.PlayerController
             _mover.Update();
         }
 
+        private void Update()
+        {
+            UpdateSelectInventory();
+        }
+
+        private void UpdateSelectInventory()
+        {
+            var selectCommand = InputManagment
+                .PlayerInputHelper.GetSelectCommand();
+
+            if (selectCommand.Has) {
+                _inventory.ChangeSelect(selectCommand);
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             var changeData = _pickuper.TryPickup(other);
