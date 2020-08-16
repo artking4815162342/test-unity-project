@@ -15,10 +15,11 @@ namespace Game.PlayerController
 
     public sealed partial class PlayerBulletLauncher : BaseModule, IBulletLanuncher
     {
-        private IInventoryReadonly _inventory;
-        private Transform _parent;
-        private int _mouseNum;
+        private readonly IInventoryReadonly _inventory;
+        private readonly Transform _parent;
+        private readonly int _mouseNum;
 
+        //TODO: transfer strings to data
         private readonly LayerMask _mask = LayerMask.GetMask("TargetAIM");
         private readonly string _pointPathPrefab = "PathPoint";
         private readonly string _collisionPointPathPrefab = "CollisionPoint";

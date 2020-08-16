@@ -12,15 +12,21 @@ namespace Game.PlayerController
 
     public sealed class PlayerMoveModule : BaseModule, IPlayerMover
     {
-        private Player _player;
+        private readonly Player _player;
+        private readonly int _mouseNum;
 
-        public PlayerMoveModule(Player player)
+        public PlayerMoveModule(Player player, int mouseNum = 0)
         {
             _player = player;
+            _mouseNum = mouseNum;
         }
 
         public void FixedUpdate()
         {
+            if (Input.GetMouseButton(_mouseNum)) {
+                return;
+            }
+
             var moveCommand = PlayerInputHelper.GetMoveCommand();
             if (moveCommand.Has) {
                 Move(moveCommand);

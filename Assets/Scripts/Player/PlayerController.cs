@@ -9,6 +9,8 @@ namespace Game.PlayerController
         [SerializeField]
         private Player _player;
 
+        private readonly int _attackMouseNum = 0;
+
         private IPlayerMover _mover;
         private IInventory _inventory;
         private IPickup _pickuper;
@@ -17,11 +19,12 @@ namespace Game.PlayerController
 
         private void Start()
         {
-            _mover = new PlayerMoveModule(_player);
+            _mover = new PlayerMoveModule(_player, _attackMouseNum);
             _inventory = new InventoryModule();
             _pickuper = new PickupModule();
             _inventoryUI = new PlayerInventoryUIModule(_player, _inventory.InventoryReadonly);
-            _bulletLanuncher = new PlayerBulletLauncher(_inventory.InventoryReadonly, _player.BulletLauncherTransform);
+            _bulletLanuncher = new PlayerBulletLauncher(
+                _inventory.InventoryReadonly, _player.BulletLauncherTransform);
         }
 
         private void FixedUpdate()
