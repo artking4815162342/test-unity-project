@@ -7,7 +7,7 @@ namespace Game.PlayerController
 {
     public interface IPlayerMover
     {
-        void Update();
+        void FixedUpdate();
     }
 
     public sealed class PlayerMoveModule : BaseModule, IPlayerMover
@@ -19,7 +19,7 @@ namespace Game.PlayerController
             _player = player;
         }
 
-        public void Update()
+        public void FixedUpdate()
         {
             var moveCommand = PlayerInputHelper.GetMoveCommand();
             if (moveCommand.Has) {

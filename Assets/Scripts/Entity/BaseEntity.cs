@@ -8,7 +8,12 @@ namespace Game.Entity
         [SerializeField]
         private Transform _mainTransform;
 
+        [SerializeField]
+        private Transform _bulletLauncherTransform;
+
         public Transform MainTransform => _mainTransform;
+
+        public Transform BulletLauncherTransform => _bulletLauncherTransform;
 
         protected virtual void Start()
         {

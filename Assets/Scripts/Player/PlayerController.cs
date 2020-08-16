@@ -13,6 +13,7 @@ namespace Game.PlayerController
         private IInventory _inventory;
         private IPickup _pickuper;
         private IPlayerInventoryUI _inventoryUI;
+        private IBulletLanuncher _bulletLanuncher;
 
         private void Start()
         {
@@ -20,15 +21,19 @@ namespace Game.PlayerController
             _inventory = new InventoryModule();
             _pickuper = new PickupModule();
             _inventoryUI = new PlayerInventoryUIModule(_player, _inventory.InventoryReadonly);
+            _bulletLanuncher = new PlayerBulletLauncher(_inventory, _player.BulletLauncherTransform);
         }
 
         private void FixedUpdate()
         {
-            _mover.Update();
+            _mover.FixedUpdate();
+            _bulletLanuncher.FixedUpdate();
         }
 
         private void Update()
         {
+            _bulletLanuncher.Update();
+
             UpdateSelectInventory();
         }
 
