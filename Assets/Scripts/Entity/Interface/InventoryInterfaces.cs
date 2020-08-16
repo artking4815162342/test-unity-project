@@ -13,8 +13,6 @@ namespace Game.GeneralModule
 
         void Remove(InventoryType type, int count);
 
-        bool Contains(InventoryType type, int count);
-
         void ProcessPickupData(PickupChangeData data);
 
         void ChangeSelect(PlayerSelectCommand command);
@@ -26,10 +24,14 @@ namespace Game.GeneralModule
 
         IInventoryDataReadonly GetItem(InventoryType type);
 
+        IInventoryDataReadonly SelectedItem { get; }
+
         IEnumerable<IInventoryDataReadonly> GetAll();
 
         void AddChangeItemEventListener(InventoryEvent @event);
 
         void RemoveChangeItemEventListener(InventoryEvent @event);
+
+        void UseItem(IInventoryDataReadonly item);
     }
 }

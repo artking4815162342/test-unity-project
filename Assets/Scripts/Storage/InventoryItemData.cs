@@ -16,10 +16,20 @@ namespace Game.Storage
         [SerializeField]
         private Color _color;
 
+        [SerializeField]
+        private GameObject _prefab;
+
+        [SerializeField]
+        private bool _isBullet;
+
         public InventoryType Type => _inventoryType;
 
         public Color Color => _color;
 
         public override int ID => (int)_inventoryType;
+
+        public GameObject Prefab => _prefab;
+
+        public bool IsBullet => _isBullet;
     }
 }

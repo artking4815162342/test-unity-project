@@ -21,7 +21,7 @@ namespace Game.PlayerController
             _inventory = new InventoryModule();
             _pickuper = new PickupModule();
             _inventoryUI = new PlayerInventoryUIModule(_player, _inventory.InventoryReadonly);
-            _bulletLanuncher = new PlayerBulletLauncher(_inventory, _player.BulletLauncherTransform);
+            _bulletLanuncher = new PlayerBulletLauncher(_inventory.InventoryReadonly, _player.BulletLauncherTransform);
         }
 
         private void FixedUpdate()

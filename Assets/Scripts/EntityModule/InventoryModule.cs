@@ -28,6 +28,8 @@ namespace Game.GeneralModule
 
         public IInventoryReadonly InventoryReadonly => this;
 
+        public IInventoryDataReadonly SelectedItem => _selectedItem;
+
         public InventoryModule()
         {
             _changeItem = delegate { };
@@ -154,6 +156,12 @@ namespace Game.GeneralModule
                 _selectedItem = item;
                 _changeItem.Invoke(new InventoryEventArgs(_selectedItem.Type));
             }
+        }
+
+        public void UseItem(IInventoryDataReadonly item)
+        {
+            this.Remove(item.Type, 1);
+            _changeItem.Invoke(new InventoryEventArgs(item.Type));
         }
     }
 }

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryType: 3
   _color: {r: 1, g: 0, b: 0.88037205, a: 1}
+  _prefab: {fileID: 547201320073038608, guid: 9c421c4266925484488826283012827e, type: 3}
+  _isBullet: 1

@@ -62,7 +62,7 @@ namespace Game.UI
                 index++;
             }
 
-            while (index < _views.Count - 1) {
+            while (index < _views.Count) {
                 var view = GetViewItem(index);
                 view.gameObject.SetActive(false);
 
