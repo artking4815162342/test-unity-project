@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Entity
 {
-    public sealed class Player : BaseSceneEntity, IHealth
+    public sealed class Player : LiveEntity
     {
         [Range(0f, 100f)]
         [SerializeField]
@@ -13,10 +13,6 @@ namespace Game.Entity
         [SerializeField]
         private float _rotationSpeed = 1f;
 
-        [Range(10, 100)]
-        [SerializeField]
-        private int _maxHealth;
-
         [SerializeField]
         private int _attackMouseNum = 0;
 
@@ -24,15 +20,15 @@ namespace Game.Entity
 
         public float RotationSpeed => _rotationSpeed;
 
-        public int MaxHealth => _maxHealth;
-
-        public int Health { get; private set; }
-
         public int AttackMouseNum => _attackMouseNum;
 
-        private void Awake()
+
+
+        protected override void InitActions()
         {
-            Health = MaxHealth;
+            EntityActionController = new PlayerActionController(this);
         }
+
+
     }
 }

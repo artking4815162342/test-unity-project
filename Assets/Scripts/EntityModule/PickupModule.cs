@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Game.Entity;
+using Game.Facade;
 
 namespace Game.GeneralModule
 {

@@ -23,6 +23,7 @@ namespace Game.PlayerController
             _inventoryUI = new PlayerInventoryUIModule(_player, _inventory.InventoryReadonly);
 
             _bulletLanuncher = new PlayerBulletLauncher(
+                _player,
                 _inventory.InventoryReadonly, 
                 _player.BulletLauncherTransform, 
                 _player.AttackMouseNum);

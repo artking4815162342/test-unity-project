@@ -103,8 +103,9 @@ GameObject:
   m_Component:
   - component: {fileID: 547201320073038622}
   - component: {fileID: 9186496920449087217}
+  - component: {fileID: 8882369768484713777}
   m_Layer: 0
-  m_Name: YellowGrenadeBullet 2
+  m_Name: YellowGrenadeBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,3 +142,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8882369768484713777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547201320073038608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12d03d35b9a8454ba510e417e68279f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isCollideOwner: 0
+  _mainCollider: {fileID: 6615397173825275570}
+  _radius: 2
+  _count: 500

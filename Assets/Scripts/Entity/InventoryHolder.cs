@@ -24,6 +24,8 @@ namespace Game.Entity
             Destroy(this.gameObject);
         }
 
+        protected override void InitActions() { }
+
         protected override void Start()
         {
             var collider = this.gameObject

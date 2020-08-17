@@ -1,11 +1,12 @@
-﻿using Game.Facade;
-
-public sealed class GameInfrastructure : BaseSingleton<GameInfrastructure>
+﻿namespace Game.Facade
 {
-    public EntityFacade EntityFacade { get; private set; }
-
-    public GameInfrastructure()
+    public sealed class GameInfrastructure : BaseSingleton<GameInfrastructure>
     {
-        EntityFacade = new EntityFacade();
+        public EntityFacade EntityFacade { get; private set; }
+
+        public GameInfrastructure()
+        {
+            EntityFacade = new EntityFacade();
+        }
     }
 }

@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 2886048705302842060}
   - component: {fileID: 2886048705302842059}
   - component: {fileID: 2886048705302842058}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 5601461350047719421}
   - component: {fileID: 7256277748912464699}
   - component: {fileID: 5229658210714620268}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Mob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainTransform: {fileID: 2886048705684869444}
   _bulletLauncherTransform: {fileID: 7471073822102542584}
-  _maxHealth: 25
+  _maxHealth: 1000
 --- !u!114 &7256277748912464699
 MonoBehaviour:
   m_ObjectHideFlags: 0

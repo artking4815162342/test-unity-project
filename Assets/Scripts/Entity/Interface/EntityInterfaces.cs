@@ -5,6 +5,8 @@
         int MaxHealth { get; }
 
         int Health { get; }
+
+        void TakeDamage(int count);
     }
 
     public interface ICanPickup

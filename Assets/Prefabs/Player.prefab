@@ -47,7 +47,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2798991250519951506}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -307,9 +307,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainTransform: {fileID: 2886048705684869444}
   _bulletLauncherTransform: {fileID: 731873462492776912}
+  _maxHealth: 1500
   _moveSpeed: 10
   _rotationSpeed: 2
-  _maxHealth: 50
+  _attackMouseNum: 0
 --- !u!114 &8341823897583087447
 MonoBehaviour:
   m_ObjectHideFlags: 0

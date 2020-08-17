@@ -3,19 +3,11 @@ using UnityEngine;
 
 namespace Game.Entity
 {
-    public sealed class SimpleMob : BaseSceneEntity, IHealth
+    public sealed class SimpleMob : LiveEntity
     {
-        [Range(10, 100)]
-        [SerializeField]
-        private int _maxHealth;
-
-        public int MaxHealth => _maxHealth;
-
-        public int Health { get; private set; }
-
-        private void Awake()
+        protected override void InitActions()
         {
-            Health = MaxHealth;
+            EntityActionController = new MobActionController(this);
         }
     }
 }

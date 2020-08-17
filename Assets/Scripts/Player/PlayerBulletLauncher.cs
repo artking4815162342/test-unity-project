@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.GeneralModule;
+using Game.Entity;
 
 namespace Game.PlayerController
 {
@@ -15,12 +16,15 @@ namespace Game.PlayerController
 
     public sealed partial class PlayerBulletLauncher : BaseModule, IBulletLanuncher
     {
+        private readonly BaseSceneEntity _entity;
         private readonly IInventoryReadonly _inventory;
         private readonly Transform _parent;
         private readonly int _mouseNum;
+        
+        private readonly LayerMask _mask = 
+            LayerMask.GetMask(LayerNames.EntityName, LayerNames.TerrainName);
 
         //TODO: transfer strings to data
-        private readonly LayerMask _mask = LayerMask.GetMask("TargetAIM");
         private readonly string _pointPathPrefab = "PathPoint";
         private readonly string _collisionPointPathPrefab = "CollisionPoint";
 
@@ -39,8 +43,9 @@ namespace Game.PlayerController
         private IInventoryDataReadonly _selectedItem;
         private Game.Storage.InventoryItemData _inventoryItemData;
 
-        public PlayerBulletLauncher(IInventoryReadonly inventory, Transform parent, int mouseNum = 0)
+        public PlayerBulletLauncher(BaseSceneEntity entity, IInventoryReadonly inventory, Transform parent, int mouseNum = 0)
         {
+            _entity = entity;
             _inventory = inventory;
             _parent = parent;
             _mouseNum = mouseNum;
@@ -151,6 +156,9 @@ namespace Game.PlayerController
             var rb = go.GetComponent<Rigidbody>();
             rb.isKinematic = false;
             rb.AddForce(_resultForce, ForceMode.VelocityChange);
+            
+            var bullet = go.GetComponent<BaseBullet>();
+            bullet.Init(_entity);
         }
     }
 }
