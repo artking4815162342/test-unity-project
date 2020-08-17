@@ -11,6 +11,11 @@ namespace Game.UI
 
     public abstract class BaseUIElement : MonoBehaviour, IElementUI
     {
+        [SerializeField]
+        protected RectTransform _mainTransform;
+
+        protected const float _meterPerPixel = 0.0025f;
+
         public abstract void Init(params object[] @params);
 
         protected void ExceptionUI(System.Exception exception)

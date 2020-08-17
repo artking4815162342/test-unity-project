@@ -28,6 +28,7 @@ namespace Game.PlayerController
             Vector3 direction = mouseWorldPos - cameraPos;
 
 #if UNITY_EDITOR
+            //ray from camera to collision point
             Debug.DrawRay(cameraPos, direction, Color.red);
 #endif
             if (Physics.Raycast(cameraPos, direction, out var hit, float.MaxValue, _mask)) {
@@ -49,6 +50,7 @@ namespace Game.PlayerController
                 _resultForce = velocityDirection.normalized * @params.velocity;
 
 #if UNITY_EDITOR
+                //ray with initial velocity direction
                 Debug.DrawRay(_parent.position, velocityDirection.normalized * 10, Color.black);
 #endif
 

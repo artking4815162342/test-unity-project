@@ -28,12 +28,10 @@ namespace Game.GeneralModule
 
         protected void SpawnSavedProcess()
         {
-            try
-            {
+            try {
                 Spawn();
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 //TODO: change to logger
                 Debug.LogException(e);
             }

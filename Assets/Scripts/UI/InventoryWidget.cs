@@ -21,12 +21,10 @@ namespace Game.UI
 
         public override void Init(params object[] @params)
         {
-            try
-            {
+            try {
                 _inventoryProvider = @params[0] as IInventoryReadonly;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 ExceptionUI(e);
                 return;
             }
@@ -38,7 +36,7 @@ namespace Game.UI
 
         private void OnDestroy()
         {
-            _inventoryProvider.RemoveChangeItemEventListener(OnChangeInventoryItem);
+            _inventoryProvider?.RemoveChangeItemEventListener(OnChangeInventoryItem);
         }
 
         private void OnChangeInventoryItem(InventoryEventArgs e)

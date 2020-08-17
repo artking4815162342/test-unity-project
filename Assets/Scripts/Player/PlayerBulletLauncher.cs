@@ -27,6 +27,7 @@ namespace Game.PlayerController
         private readonly string _containerPointObjectName = "PathPoints";
         private readonly string _collisionPointObjectName = "CollisionPoint";
 
+        private bool _isInited = false;
         private bool _started = false;
         private List<Transform> _listPoints;
         private Transform _containerPath;
@@ -44,7 +45,15 @@ namespace Game.PlayerController
             _parent = parent;
             _mouseNum = mouseNum;
 
-            CreatePoints();
+            try {
+                CreatePoints();
+                _isInited = true;
+            }
+            catch (Exception e) {
+                //TODO: change to logger
+                Debug.LogException(e);
+                _isInited = false;
+            }
         }
 
         private void CreatePoints()
@@ -78,6 +87,10 @@ namespace Game.PlayerController
 
         public void Update()
         {
+            if (_isInited == false) {
+                return;
+            }
+
             if (_started == false && Input.GetMouseButtonDown(_mouseNum)) {
                 if (CanStart()) {
                     _started = true;

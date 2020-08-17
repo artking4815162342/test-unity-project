@@ -17,6 +17,9 @@ namespace Game.Entity
         [SerializeField]
         private int _maxHealth;
 
+        [SerializeField]
+        private int _attackMouseNum = 0;
+
         public float MoveSpeed => _moveSpeed;
 
         public float RotationSpeed => _rotationSpeed;
@@ -24,6 +27,8 @@ namespace Game.Entity
         public int MaxHealth => _maxHealth;
 
         public int Health { get; private set; }
+
+        public int AttackMouseNum => _attackMouseNum;
 
         private void Awake()
         {

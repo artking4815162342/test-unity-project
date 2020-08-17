@@ -197,6 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2886048705684869444}
   - component: {fileID: 5601461350047719421}
+  - component: {fileID: 7256277748912464699}
   - component: {fileID: 5229658210714620268}
   m_Layer: 10
   m_Name: Mob
@@ -236,6 +237,19 @@ MonoBehaviour:
   _mainTransform: {fileID: 2886048705684869444}
   _bulletLauncherTransform: {fileID: 7471073822102542584}
   _maxHealth: 25
+--- !u!114 &7256277748912464699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886048705684869443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e507fb3f0bbb14a9d8b12fabaa5f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mob: {fileID: 5601461350047719421}
 --- !u!54 &5229658210714620268
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85558bc66786e904c8f6141a113efe3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainTransform: {fileID: 6716480178850555416}
   _template: {fileID: 9112460055251644722, guid: 81b79b31f19797f4c9a84a1d3cfb5d5d,
     type: 3}
   _grid: {fileID: 4826953907774660479}
