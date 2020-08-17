@@ -39,7 +39,7 @@ namespace Game.Entity
             for (int i = 0; i < targets.Length; i++) {
                 var targetGO = targets[i].transform.root.gameObject;
                 var targetEntity = GameInfrastructure
-                    .GetInstance.EntityFacade.TryGetEntity(targetGO);
+                    .GetInstance.EntityFacade.EntityAggregator.TryGetEntity(targetGO);
 
                 if (targetEntity == null || targetEntity == Owner) {
                     continue;

@@ -1,5 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using Game.Facade;
+using System;
 
 namespace Game.Entity
 {
@@ -8,6 +9,8 @@ namespace Game.Entity
         [Range(100, 2000)]
         [SerializeField]
         private int _maxHealth;
+
+        public event Action HealthChange = delegate { };
 
         public int MaxHealth => _maxHealth;
 
@@ -19,6 +22,8 @@ namespace Game.Entity
             if (Health == 0) {
                 Dead();
             }
+
+            HealthChange.Invoke();
         }
 
         protected void Awake()

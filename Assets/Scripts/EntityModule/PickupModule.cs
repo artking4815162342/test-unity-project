@@ -24,7 +24,7 @@ namespace Game.GeneralModule
         {
             var colliderRoot = collider.transform.root.gameObject;
             var entity = GameInfrastructure.GetInstance
-                .EntityFacade.TryGetEntity(colliderRoot);
+                .EntityFacade.EntityAggregator.TryGetEntity(colliderRoot);
 
             if (entity == null || !(entity is ICanPickup pickupObject)) {
                 return default;

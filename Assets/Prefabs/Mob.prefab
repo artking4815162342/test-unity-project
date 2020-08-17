@@ -236,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainTransform: {fileID: 2886048705684869444}
   _bulletLauncherTransform: {fileID: 7471073822102542584}
-  _maxHealth: 1000
+  _maxHealth: 1250
 --- !u!114 &7256277748912464699
 MonoBehaviour:
   m_ObjectHideFlags: 0

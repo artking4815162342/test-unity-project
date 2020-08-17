@@ -2,6 +2,8 @@
 {
     public interface IHealth
     {
+        event System.Action HealthChange;
+
         int MaxHealth { get; }
 
         int Health { get; }

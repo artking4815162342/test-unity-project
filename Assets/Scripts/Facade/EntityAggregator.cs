@@ -38,7 +38,7 @@ namespace Game.Facade
 
         public void OnNext(EntityEventArgs value)
         {
-            if (value.ExistanceStatus) {
+            if (value.Is) {
                 Add(value.Entity);
             }
             else {

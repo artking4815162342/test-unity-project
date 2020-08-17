@@ -35,12 +35,15 @@ namespace Game.UI
             _canvas.transform.localScale = Vector3.one * _meterPerPixel;
             _up = this.transform.up;
 
+            _healthProvider.HealthChange += UpdateBar;
+
             UpdateBar();
         }
 
         private void UpdateBar()
         {
-            float currentHelah = _healthProvider.Health / _healthProvider.MaxHealth;
+            float currentHelah = 
+                (float)_healthProvider.Health / _healthProvider.MaxHealth;
             _bar.fillAmount = currentHelah;
 
             int percentValue = Mathf.FloorToInt(currentHelah * 100);

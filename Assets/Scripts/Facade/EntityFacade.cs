@@ -1,10 +1,6 @@
-﻿using System;
-using UnityEngine;
-using Game.Entity;
-
-namespace Game.Facade
+﻿namespace Game.Facade
 {
-    public sealed class EntityFacade : IEntityAggregator, IEntityEventProvider
+    public sealed class EntityFacade 
     {
         private EntityEventProvider _eventProvider;
         private EntityAggregator _entityAggregator;
@@ -17,14 +13,8 @@ namespace Game.Facade
             _eventProvider.Subscribe(_entityAggregator);
         }
 
-        public void OnChangeExistanceStatus(EntityEventArgs e)
-        {
-            _eventProvider.OnChangeExistanceStatus(e);
-        }
+        public IEntityAggregator EntityAggregator => _entityAggregator;
 
-        public BaseSceneEntity TryGetEntity(GameObject mobGameObject)
-        {
-            return _entityAggregator.TryGetEntity(mobGameObject);
-        }
+        public IEntityEventProvider EntityEventProvider => _eventProvider;
     }
 }

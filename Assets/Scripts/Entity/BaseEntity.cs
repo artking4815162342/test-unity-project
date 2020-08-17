@@ -19,18 +19,24 @@ namespace Game.Entity
 
         protected abstract void InitActions();
 
+        private void SendExistanceEvent(bool value)
+        {
+            var eventArgs = new EntityEventArgs(this, value);
+
+            GameInfrastructure.GetInstance.EntityFacade.EntityEventProvider
+                .SendEvent(eventArgs);
+        }
+
         protected virtual void Start()
         {
             InitActions();
 
-            GameInfrastructure.GetInstance.EntityFacade
-                .OnChangeExistanceStatus(new Facade.EntityEventArgs(this, true));
+            SendExistanceEvent(true);
         }
 
         protected virtual void OnDestroy()
         {
-            GameInfrastructure.GetInstance.EntityFacade
-                .OnChangeExistanceStatus(new Facade.EntityEventArgs(this, false));
+            SendExistanceEvent(false);
         }
 
         protected virtual void Destroy()

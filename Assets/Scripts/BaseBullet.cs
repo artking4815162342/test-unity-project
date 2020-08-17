@@ -58,7 +58,7 @@ namespace Game.GeneralModule
             if (_isCollideOwner == false) {
                 var targetGO = collision.transform.root.gameObject;
                 var targetEntity = GameInfrastructure
-                    .GetInstance.EntityFacade.TryGetEntity(targetGO);
+                    .GetInstance.EntityFacade.EntityAggregator.TryGetEntity(targetGO);
 
                 if (targetEntity == _owner) {
                     return true;
