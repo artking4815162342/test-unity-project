@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
-using Game.GeneralModule;
-using Game.Entity;
+﻿using UnityEngine;
+using Game.FX;
 
 namespace Game.GeneralModule
 {
@@ -13,12 +11,21 @@ namespace Game.GeneralModule
         [SerializeField]
         private int _count = 500;
 
+        [SerializeField]
+        private BaseFX _effectPrefab;
+
         protected override void Hit()
         {
             _owner.EntityActionController
                 .GiveDamageAOE(this.transform.position, _radius, _count);
         }
 
-        protected override void PlayFX() { }
+        protected override void PlayFX()
+        {
+            var fx = GameObject.Instantiate(_effectPrefab);
+
+            fx.transform.position = this.transform.position;
+            fx.Play();
+        }
     }
 }

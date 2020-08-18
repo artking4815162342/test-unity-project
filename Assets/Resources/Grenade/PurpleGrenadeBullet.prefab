@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 547201320073038622}
   - component: {fileID: 9186496920449087217}
-  - component: {fileID: 2837958599127856271}
+  - component: {fileID: 2389711309083414892}
   m_Layer: 0
   m_Name: PurpleGrenadeBullet
   m_TagString: Untagged
@@ -142,7 +142,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2837958599127856271
+--- !u!114 &2389711309083414892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,10 +151,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 547201320073038608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12d03d35b9a8454ba510e417e68279f, type: 3}
+  m_Script: {fileID: 11500000, guid: e879a831069f3db48a66949d79ed5682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _isCollideOwner: 0
   _mainCollider: {fileID: 6615397173825275570}
   _radius: 2
   _count: 500
+  _effectPrefab: {fileID: 6318008234978757893, guid: cbac380448113d541a515534d338be9d,
+    type: 3}

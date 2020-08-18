@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 547201320073038622}
   - component: {fileID: 9186496920449087217}
-  - component: {fileID: 7745684452175216854}
+  - component: {fileID: 1770114954623492106}
   m_Layer: 0
   m_Name: BlueGrenadeBullet
   m_TagString: Untagged
@@ -142,7 +142,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7745684452175216854
+--- !u!114 &1770114954623492106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,10 +151,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 547201320073038608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12d03d35b9a8454ba510e417e68279f, type: 3}
+  m_Script: {fileID: 11500000, guid: e879a831069f3db48a66949d79ed5682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _isCollideOwner: 0
   _mainCollider: {fileID: 6615397173825275570}
   _radius: 2
   _count: 500
+  _effectPrefab: {fileID: 2935513983826289583, guid: 45a5f11be9b4a2340a9bddd6f518b8d0,
+    type: 3}

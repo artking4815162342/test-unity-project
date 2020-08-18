@@ -17,6 +17,7 @@ namespace Game.PlayerController
         private float cosAlpha;
         private float tgAlpha;
 
+        //TODO: limit area
         private void DrowProcess()
         {
             Vector3 cameraPos = Camera.main.transform.position;
