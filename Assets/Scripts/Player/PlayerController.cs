@@ -17,10 +17,17 @@ namespace Game.PlayerController
 
         private void Start()
         {
-            _mover = new PlayerMoveModule(_player, _player.AttackMouseNum);
             _inventory = new InventoryModule();
             _pickuper = new PickupModule();
-            _inventoryUI = new PlayerInventoryUIModule(_player, _inventory.InventoryReadonly);
+
+            _inventoryUI = new PlayerInventoryUIModule(
+                _player, 
+                _inventory.InventoryReadonly);
+
+            _mover = new PlayerMoveModule(
+                _player,
+                _inventory.InventoryReadonly,
+                _player.AttackMouseNum);
 
             _bulletLanuncher = new PlayerBulletLauncher(
                 _player,
@@ -38,6 +45,7 @@ namespace Game.PlayerController
         private void Update()
         {
             _bulletLanuncher.Update();
+            _mover.Update();
 
             UpdateSelectInventory();
         }

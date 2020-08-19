@@ -7,6 +7,8 @@ namespace Game.PlayerController
 {
     public interface IPlayerMover
     {
+        void Update();
+
         void FixedUpdate();
     }
 
@@ -14,22 +16,44 @@ namespace Game.PlayerController
     {
         private readonly Player _player;
         private readonly int _mouseNum;
+        private readonly IInventoryReadonly _inventory;
 
-        public PlayerMoveModule(Player player, int mouseNum = 0)
+        private bool _isBlockAIM = false;
+
+        public PlayerMoveModule(Player player, IInventoryReadonly inventory, int mouseNum = 0)
         {
             _player = player;
+            _inventory = inventory;
             _mouseNum = mouseNum;
         }
 
         public void FixedUpdate()
         {
-            if (Input.GetMouseButton(_mouseNum)) {
+            if (_isBlockAIM) {
                 return;
             }
 
             var moveCommand = PlayerInputHelper.GetMoveCommand();
             if (moveCommand.Has) {
                 Move(moveCommand);
+            }
+        }
+
+        public void Update()
+        {
+            CheckAIM();
+        }
+
+        private void CheckAIM()
+        {
+            if (_inventory.SelectedItem != null && Input.GetMouseButtonDown(_mouseNum)) {
+                _isBlockAIM = true;
+                return;
+            }
+
+            if (Input.GetMouseButtonUp(_mouseNum)) {
+                _isBlockAIM = false;
+                return;
             }
         }
 
