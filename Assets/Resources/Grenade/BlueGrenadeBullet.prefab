@@ -88,7 +88,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3248598594604703}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isCollideOwner: 0
   _mainCollider: {fileID: 6615397173825275570}
-  _radius: 2
+  _radius: 2.5
   _count: 500
   _effectPrefab: {fileID: 2935513983826289583, guid: 45a5f11be9b4a2340a9bddd6f518b8d0,
     type: 3}

@@ -34,12 +34,25 @@ namespace Game.GeneralModule
         private void OnCollisionEnter(Collision collision)
         {
             if (_isInited == false) {
+                Physics.IgnoreCollision(
+                   _mainCollider, collision.collider);
+            }
+
+            if (CheckIgnore(collision.gameObject)) {
+                Physics.IgnoreCollision(
+                    _mainCollider, collision.collider);
                 return;
             }
 
-            if (CheckIgnore(collision)) {
-                Physics.IgnoreCollision(
-                    _mainCollider, collision.collider);
+            Hit();
+            PlayFX();
+
+            GameObject.Destroy(this.gameObject);
+        }
+
+        private void OnTriggerEnter(Collider collision)
+        {
+            if (CheckIgnore(collision.gameObject)) {
                 return;
             }
 
@@ -53,10 +66,10 @@ namespace Game.GeneralModule
 
         protected abstract void PlayFX();
 
-        protected virtual bool CheckIgnore(Collision collision)
+        protected virtual bool CheckIgnore(GameObject gameObject)
         {
             if (_isCollideOwner == false) {
-                var targetGO = collision.transform.root.gameObject;
+                var targetGO = gameObject.transform.root.gameObject;
                 var targetEntity = GameInfrastructure
                     .GetInstance.EntityFacade.EntityAggregator.TryGetEntity(targetGO);
 

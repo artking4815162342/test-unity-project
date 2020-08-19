@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8921978612225585363}
   - component: {fileID: 1546380350072204568}
   - component: {fileID: 5761113154979718369}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2886048705229163116}
   - component: {fileID: 2886048705229163115}
   - component: {fileID: 2886048705229163114}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 2886048705302842060}
   - component: {fileID: 2886048705302842059}
   - component: {fileID: 1194111534835760502}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 5584890425509744060}
   - component: {fileID: 8341823897583087447}
   - component: {fileID: 2895008625420047466}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 731873462492776912}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: BulletLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 2753800900702552685}
   - component: {fileID: 1044427065390653424}
   - component: {fileID: 9221570207836715270}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}

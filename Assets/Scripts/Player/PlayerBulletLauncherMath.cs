@@ -8,7 +8,8 @@ namespace Game.PlayerController
 {
     public sealed partial class PlayerBulletLauncher : BaseModule, IBulletLanuncher
     {
-        private readonly int _dotsCount = 20;
+        private readonly int _visionAngle = 90;
+        private readonly int _dotsCount = 25;
         private readonly int _angleDegree = -30;
         private readonly float _gravity = 9.80665f;
 
@@ -17,7 +18,11 @@ namespace Game.PlayerController
         private float cosAlpha;
         private float tgAlpha;
 
-        //TODO: limit area
+        private bool CheckPoint(Vector3 fullVector)
+        {
+            return Vector3.Angle(fullVector, _entity.MainTransform.forward) <= _visionAngle;
+        }
+
         private void DrowProcess()
         {
             Vector3 cameraPos = Camera.main.transform.position;
@@ -33,12 +38,18 @@ namespace Game.PlayerController
             Debug.DrawRay(cameraPos, direction, Color.red);
 #endif
             if (Physics.Raycast(cameraPos, direction, out var hit, float.MaxValue, _mask)) {
-                _collisionPoint.position = hit.point;
-                _collisionPoint.transform.rotation =
-                    Quaternion.FromToRotation(Vector3.forward, hit.normal);
 
                 Vector3 fullVector = hit.point - _parent.position;
                 Vector2 horizontalPart = new Vector2(fullVector.x, fullVector.z);
+
+                if (CheckPoint(fullVector) == false) {
+                    return;
+                }
+
+                _collisionPoint.position = hit.point;
+                _collisionPoint.transform.rotation =
+                    Quaternion.FromToRotation(Vector3.forward, hit.normal);
+                
                 var @params = CalcParams(horizontalPart.magnitude, fullVector.y);
 
                 _parent.LookAt(hit.point);
