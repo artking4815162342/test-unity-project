@@ -11,6 +11,7 @@ namespace Game.UI
 
     public abstract class BaseUIElement : MonoBehaviour, IElementUI
     {
+        [Header("General")]
         [SerializeField]
         protected RectTransform _mainTransform;
 
