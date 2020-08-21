@@ -18,6 +18,7 @@ namespace Game.PlayerController
         private readonly int _mouseNum;
         private readonly IInventoryReadonly _inventory;
 
+        private Rigidbody _rigidbody;
         private bool _isBlockAIM = false;
 
         public PlayerMoveModule(Player player, IInventoryReadonly inventory, int mouseNum = 0)
@@ -25,18 +26,18 @@ namespace Game.PlayerController
             _player = player;
             _inventory = inventory;
             _mouseNum = mouseNum;
+
+            _rigidbody = player.GetComponent<Rigidbody>();
         }
 
         public void FixedUpdate()
         {
             if (_isBlockAIM) {
+                SetEmptyVelocity();
                 return;
             }
 
-            var moveCommand = PlayerInputHelper.GetMoveCommand();
-            if (moveCommand.Has) {
-                Move(moveCommand);
-            }
+            Move();
         }
 
         public void Update()
@@ -57,47 +58,30 @@ namespace Game.PlayerController
             }
         }
 
-        private void Move(PlayerMoveCommand moveCommand)
+        private void SetEmptyVelocity()
         {
-            Vector3 fromPosition = _player.MainTransform.position;
-            Vector3 toPosition = Vector3.zero;
-            Vector3 direction = Vector3.zero;
+            _rigidbody.velocity = Vector3.zero;
+        }
 
-            if (moveCommand.w) {
-                direction += _player.MainTransform.forward;
-            }
+        private void Move()
+        {
+            float moveHorizontal = Input.GetAxis(InputNames.Horizontal);
+            float moveVertical = Input.GetAxis(InputNames.Vertical);
 
-            if (moveCommand.s) {
-                direction -= _player.MainTransform.forward;
-            }
+            Vector3 direction = new Vector3(moveHorizontal, 0f, moveVertical);
+            Vector3 localDirection = _player.MainTransform.rotation * direction;
 
-            if (moveCommand.d) {
-                direction += _player.MainTransform.right;
-            }
+            _rigidbody.velocity = localDirection.normalized * _player.MoveSpeed;
 
-            if (moveCommand.a) {
-                direction -= _player.MainTransform.right;
-            }
-
-            toPosition = fromPosition + direction.normalized;
-            _player.MainTransform.position = Vector3.Lerp(
-               fromPosition,
-               toPosition,
-               Time.deltaTime * _player.MoveSpeed);
-
-            if (direction.Equals(Vector3.zero)) {
+            if (Mathf.Abs(direction.x) < float.Epsilon && Mathf.Abs(direction.y) < float.Epsilon) {
                 return;
             }
 
-            Quaternion fromRotation = _player.MainTransform.rotation;
-            Quaternion toRotation = Quaternion.LookRotation(direction);
-
-            if (!direction.Equals(-_player.MainTransform.forward)) {
-                _player.MainTransform.rotation = Quaternion.Lerp(
-                fromRotation,
+            Quaternion toRotation = Quaternion.LookRotation(localDirection);
+            _rigidbody.rotation = Quaternion.Lerp(
+                _rigidbody.rotation,
                 toRotation,
                 Time.deltaTime * _player.RotationSpeed);
-            }
         }
     }
 }

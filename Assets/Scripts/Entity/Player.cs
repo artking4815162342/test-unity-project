@@ -22,13 +22,9 @@ namespace Game.Entity
 
         public int AttackMouseNum => _attackMouseNum;
 
-
-
         protected override void InitActions()
         {
             EntityActionController = new PlayerActionController(this);
         }
-
-
     }
 }
