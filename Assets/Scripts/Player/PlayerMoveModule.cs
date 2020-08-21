@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Game.Entity;
-using Game.InputManagment;
 using Game.GeneralModule;
 
 namespace Game.PlayerController
@@ -70,8 +69,9 @@ namespace Game.PlayerController
 
             Vector3 direction = new Vector3(moveHorizontal, 0f, moveVertical);
             Vector3 localDirection = _player.MainTransform.rotation * direction;
+            Vector3 resultVelocity = localDirection.normalized * _player.MoveSpeed;
 
-            _rigidbody.velocity = localDirection.normalized * _player.MoveSpeed;
+            _rigidbody.MovePosition(_rigidbody.position + resultVelocity * Time.fixedDeltaTime);
 
             if (Mathf.Abs(direction.x) < float.Epsilon && Mathf.Abs(direction.y) < float.Epsilon) {
                 return;
