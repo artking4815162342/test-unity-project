@@ -19,7 +19,6 @@ namespace Game.PlayerController
         private readonly BaseSceneEntity _entity;
         private readonly IInventoryReadonly _inventory;
         private readonly Transform _parent;
-        private readonly int _mouseNum;
         
         private readonly LayerMask _mask = 
             LayerMask.GetMask(LayerNames.EntityName, LayerNames.TerrainName);
@@ -43,12 +42,11 @@ namespace Game.PlayerController
         private IInventoryDataReadonly _selectedItem;
         private Game.Storage.InventoryItemData _inventoryItemData;
 
-        public PlayerBulletLauncher(BaseSceneEntity entity, IInventoryReadonly inventory, Transform parent, int mouseNum = 0)
+        public PlayerBulletLauncher(BaseSceneEntity entity, IInventoryReadonly inventory, Transform parent)
         {
             _entity = entity;
             _inventory = inventory;
             _parent = parent;
-            _mouseNum = mouseNum;
 
             try {
                 CreatePoints();
@@ -96,14 +94,14 @@ namespace Game.PlayerController
                 return;
             }
 
-            if (_started == false && Input.GetMouseButtonDown(_mouseNum)) {
+            if (_started == false && Input.GetButtonDown(InputNames.Fire1)) {
                 if (CanStart()) {
                     _started = true;
                     StartProcess();
                 }
             }
 
-            if (_started && Input.GetMouseButtonUp(_mouseNum)) {
+            if (_started && Input.GetButtonUp(InputNames.Fire1)) {
                 _started = false;
                 EndProcess();
             }

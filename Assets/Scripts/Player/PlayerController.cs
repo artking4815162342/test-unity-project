@@ -26,14 +26,12 @@ namespace Game.PlayerController
 
             _mover = new PlayerMoveModule(
                 _player,
-                _inventory.InventoryReadonly,
-                _player.AttackMouseNum);
+                _inventory.InventoryReadonly);
 
             _bulletLanuncher = new PlayerBulletLauncher(
                 _player,
                 _inventory.InventoryReadonly, 
-                _player.BulletLauncherTransform, 
-                _player.AttackMouseNum);
+                _player.BulletLauncherTransform);
         }
 
         private void FixedUpdate()

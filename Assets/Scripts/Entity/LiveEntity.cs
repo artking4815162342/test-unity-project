@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Game.Facade;
 using System;
 
 namespace Game.Entity
@@ -26,7 +25,7 @@ namespace Game.Entity
             HealthChange.Invoke();
         }
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             Health = MaxHealth;
         }

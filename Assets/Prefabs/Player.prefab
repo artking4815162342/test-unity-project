@@ -311,6 +311,7 @@ MonoBehaviour:
   _moveSpeed: 10
   _rotationSpeed: 2
   _attackMouseNum: 0
+  _rigidbody: {fileID: 2895008625420047466}
 --- !u!114 &8341823897583087447
 MonoBehaviour:
   m_ObjectHideFlags: 0

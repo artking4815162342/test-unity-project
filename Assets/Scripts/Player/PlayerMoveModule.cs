@@ -13,20 +13,17 @@ namespace Game.PlayerController
 
     public sealed class PlayerMoveModule : BaseModule, IPlayerMover
     {
-        private readonly Player _player;
-        private readonly int _mouseNum;
+        private readonly IPlayer _player;
+        private readonly Rigidbody _rigidbody;
         private readonly IInventoryReadonly _inventory;
 
-        private Rigidbody _rigidbody;
         private bool _isBlockAIM = false;
 
-        public PlayerMoveModule(Player player, IInventoryReadonly inventory, int mouseNum = 0)
+        public PlayerMoveModule(IPlayer player, IInventoryReadonly inventory)
         {
             _player = player;
+            _rigidbody = _player.Rigidbody;
             _inventory = inventory;
-            _mouseNum = mouseNum;
-
-            _rigidbody = player.GetComponent<Rigidbody>();
         }
 
         public void FixedUpdate()
@@ -46,12 +43,12 @@ namespace Game.PlayerController
 
         private void CheckAIM()
         {
-            if (_inventory.SelectedItem != null && Input.GetMouseButtonDown(_mouseNum)) {
+            if (_inventory.SelectedItem != null && Input.GetButtonDown(InputNames.Fire1)) {
                 _isBlockAIM = true;
                 return;
             }
 
-            if (Input.GetMouseButtonUp(_mouseNum)) {
+            if (Input.GetButtonUp(InputNames.Fire1)) {
                 _isBlockAIM = false;
                 return;
             }
